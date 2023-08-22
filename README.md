@@ -1,4 +1,5 @@
-install client deps
+--install client deps
 ```cd client && yarn```
-for start simple command in root
+
+--for start simple command in root
 ```docker-compose up```
