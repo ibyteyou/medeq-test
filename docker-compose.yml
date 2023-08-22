@@ -1,0 +1,22 @@
+# версия `compose`
+version: '3.9'
+# сервисы
+services:
+  client:
+    image: node:16
+    # рабочая директория
+    working_dir: /client
+    # анонимный том
+    # `rw` означает `read/write` - чтение/запись
+    volumes:
+      - ./client:/client:rw
+    ports:
+      - 8080:8080
+    restart: on-failure
+    # команда для запуска сервера для разработки
+    command: bash -c "yarn serve"
+  api:
+    build: api/
+    command: 'php artisan serve --host=0.0.0.0'
+    ports:
+      - "8000:8000"
